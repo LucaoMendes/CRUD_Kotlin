@@ -33,6 +33,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         val usr = usrList[position]
         holder.bindView(usr)
         holder.itemView.setOnClickListener{ onClickItem?.invoke(usr) }
+        holder.btnDelete.setOnClickListener{ onClickDelete?.invoke(usr) }
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +45,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         private var id = view.findViewById<TextView>(R.id.cardID)
         private var name = view.findViewById<TextView>(R.id.cardUserName)
         private var login = view.findViewById<TextView>(R.id.cardUserLogin)
-        private var btnDelete = view.findViewById<TextView>(R.id.cardBtnDel)
+        var btnDelete = view.findViewById<TextView>(R.id.cardBtnDel)
         private lateinit var database: SQLiteHelper
 
         fun bindView(usr:UserModel){
