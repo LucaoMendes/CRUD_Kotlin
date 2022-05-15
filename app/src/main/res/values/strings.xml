@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Primeira Aplicação</string>
+    <string name="primary_text">Hello World</string>
+    <string name="your_user_name">Nome de úsuario</string>
+    <string name="your_login">Seu login</string>
+    <string name="your_pass">Sua senha</string>
+    <string name="save">Salvar</string>
+    <string name="the_title">Kotlin CRUD LM.</string>
+    <string name="view">Visualizar</string>
+    <string name="clear">Limpar</string>
+</resources>
