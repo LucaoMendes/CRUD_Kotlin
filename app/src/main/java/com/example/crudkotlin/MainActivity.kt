@@ -77,16 +77,21 @@ class MainActivity : AppCompatActivity() {
             }else {
                 login = login.lowercase()
                 val user = UserModel(id= usr.id,name = name, login = login, pass = pass)
-                val status = database.updateUser(user)
-                Log.e("STATUS UPDATE",status.toString())
-                if(status > 0){
-                    Toast.makeText(this,"Perfeito!",Toast.LENGTH_SHORT).show()
-                    clearEditText()
-                    getUsers()
+                if(user.name != usr.name || user.login != usr.login || user.pass != usr.pass){
+                    val status = database.updateUser(user)
+                    Log.e("STATUS UPDATE",status.toString())
+                    if(status > 0){
+                        Toast.makeText(this,"Perfeito!",Toast.LENGTH_SHORT).show()
+                        clearEditText()
+                        getUsers()
 
+                    }else{
+                        Toast.makeText(this,"Erro ao atualizar usuário!",Toast.LENGTH_SHORT).show()
+                    }
                 }else{
-                    Toast.makeText(this,"Erro ao atualizar usuário!",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Nenhuma alteração foi feita!",Toast.LENGTH_SHORT).show()
                 }
+
 
 
             }
