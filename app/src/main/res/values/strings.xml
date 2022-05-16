@@ -8,4 +8,7 @@
     <string name="the_title">Kotlin CRUD LM.</string>
     <string name="view">Visualizar</string>
     <string name="clear">Limpar</string>
+    <string name="login">Login</string>
+    <string name="login_title">Sistema de Auth.1</string>
+    <string name="register">Cadastrar</string>
 </resources>

@@ -49,6 +49,32 @@ class SQLiteHelper(context:Context) :
         return success
     }
     @SuppressLint("Range")
+    fun getUser(user: UserModel):UserModel{
+        val db= this.writableDatabase
+        val SQL = "SELECT * FROM $TBL_USERS WHERE $LOGIN = '${user.login}'"
+        val cursor: Cursor?
+
+        try{
+            cursor = db.rawQuery(SQL,null)
+
+        }catch (e: Exception){
+            e.printStackTrace()
+            db.execSQL(SQL)
+            return UserModel(0,"0","0","0")
+        }
+        if(cursor.moveToFirst()){
+            var id: Int = cursor.getInt(cursor.getColumnIndex(ID))
+            var name:String = cursor.getString(cursor.getColumnIndex(NAME))
+            var login:String = cursor.getString(cursor.getColumnIndex(LOGIN))
+            var pass:String = cursor.getString(cursor.getColumnIndex(PASS))
+            return UserModel(id = id, name = name, login = login, pass = pass)
+        }
+
+        return UserModel(0,"0","0","0")
+
+    }
+
+    @SuppressLint("Range")
     fun getAllUsers(): ArrayList<UserModel>{
         val usrList: ArrayList<UserModel> = ArrayList()
         val SQL = "SELECT * FROM $TBL_USERS"
@@ -93,6 +119,8 @@ class SQLiteHelper(context:Context) :
 
         return success
     }
+
+
 
     fun updateUser(usr:UserModel):Int{
         val db = this.writableDatabase
