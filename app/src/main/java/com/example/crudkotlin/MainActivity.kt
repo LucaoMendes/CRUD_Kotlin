@@ -115,8 +115,12 @@ class MainActivity : AppCompatActivity() {
         }else if (pass.length < 5){
             Toast.makeText(this,"Sua senha precisa ter no minimo 5 digitos!!",Toast.LENGTH_SHORT).show()
         }else {
+
             login = login.lowercase()
             val user = UserModel(name = name, login = login, pass = pass)
+            val tempUser = database.getUser(user)
+            if(tempUser.login == user.login)
+                return Toast.makeText(this,"Esse Usúario já existe, escolha outro login!", Toast.LENGTH_SHORT).show()
             val status = database.insertUser(user)
 
             if(status > -1){
